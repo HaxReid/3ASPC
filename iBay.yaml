@@ -1,0 +1,358 @@
+openapi: 3.0.0
+info:
+  title: iBay API
+  description: Description de mon API iBay 3ASPC
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Serveur local
+tags:
+  - name: users
+    description: Users
+  - name: products
+    description: Products
+  - name: cart
+    description: Cart
+  - name: auth
+    description: Auth
+paths:
+  /api/users:
+    get:
+      tags:
+        - users
+      summary: Obtenir la liste des utilisateurs
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Liste des utilisateurs
+          content:
+            application/json:
+              example:
+                - id: 1
+                  username: Utilisateur1
+                  email: utilisateur1@email.com
+                - id: 2
+                  username: Utilisateur2
+                  email: utilisateur2@email.com
+    post:
+      tags:
+        - users
+      summary: Créer un nouvel utilisateur
+      requestBody:
+        description: Objet utilisateur à créer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Utilisateur créé avec succès
+          content:
+            application/json:
+              example:
+                id: 3
+                username: NouvelUtilisateur
+                email: nouvel.utilisateur@email.com
+  /api/users/{id}:
+    get:
+      tags:
+        - users
+      summary: Obtenir un utilisateur par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails de l'utilisateur
+          content:
+            application/json:
+              example:
+                id: 1
+                username: Utilisateur1
+                email: utilisateur1@email.com
+        '404':
+          description: Utilisateur non trouvé
+    put:
+      tags:
+        - users
+      summary: Mettre à jour un utilisateur par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Objet utilisateur mis à jour
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '204':
+          description: Utilisateur mis à jour avec succès
+        '404':
+          description: Utilisateur non trouvé
+    delete:
+      tags:
+        - users
+      summary: Supprimer un utilisateur par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Utilisateur supprimé avec succès
+        '404':
+          description: Utilisateur non trouvé
+  /api/products:
+    get:
+      tags:
+        - products
+      summary: Obtenir la liste des produits
+      parameters:
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+          default: added_time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          default: 10
+      responses:
+        '200':
+          description: Liste des produits
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: Produit 1
+                  price: 10.99
+                - id: 2
+                  name: Produit 2
+                  price: 19.99
+    post:
+      tags:
+        - products
+      summary: Créer un nouveau produit
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: Objet produit à créer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Produit créé avec succès
+          content:
+            application/json:
+              example:
+                id: 3
+                name: Nouveau produit
+                price: 5.99
+  /api/products/{id}:
+    get:
+      tags:
+        - products
+      summary: Obtenir un produit par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Détails du produit
+          content:
+            application/json:
+              example:
+                id: 1
+                name: Produit 1
+                price: 10.99
+        '404':
+          description: Produit non trouvé
+    put:
+      tags:
+        - products
+      summary: Mettre à jour un produit par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: Objet produit mis à jour
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '204':
+          description: Produit mis à jour avec succès
+        '404':
+          description: Produit non trouvé
+    delete:
+      tags:
+        - products
+      summary: Supprimer un produit par ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      security:
+        - BearerAuth: []
+      responses:
+        '204':
+          description: Produit supprimé avec succès
+        '404':
+          description: Produit non trouvé
+  /api/cart:
+    get:
+      tags:
+        - cart
+      summary: Obtenir le contenu du panier
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Liste des produits dans le panier
+          content:
+            application/json:
+              example:
+                - userId: 1
+                  productId: 1
+                - userId: 1
+                  productId: 2
+  /api/cart/{id}:
+    post:
+      tags:
+        - cart
+      summary: Ajouter un produit au panier
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: ID du produit à ajouter au panier
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productId:
+                  type: integer
+      responses:
+        '200':
+          description: Produit ajouté au panier avec succès
+        '400':
+          description: Le produit est déjà dans le panier ou une autre erreur
+    delete:
+      tags:
+        - cart
+      summary: Supprimer un produit du panier
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: productId
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Produit supprimé du panier avec succès
+        '404':
+          description: Le produit n'est pas dans le panier ou une autre erreur
+  /api/auth/login:
+    post:
+      tags:
+        - auth
+      summary: Authentification utilisateur
+      requestBody:
+        description: Requête d'authentification
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authentification réussie
+          content:
+            application/json:
+              example:
+                Token: Votre-JWT-Token
+        '401':
+          description: Nom d'utilisateur ou mot de passe incorrect
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        Id:
+          type: integer
+        Email:
+          type: string
+        Username:
+          type: string 
+        Password:
+          type: string
+        Role:
+          type: string  
+    Product:
+      type: object
+      properties:
+        Id:
+          type: integer
+        Name:
+          type: string
+        Image:
+          type: string
+        Price:
+          type: decimal
+        Type:
+          type: string
+        Available:
+          type: boolean
+        AddedTime:
+          type: string
+        SellerId:
+          type: integer
+    Cart:
+      type: object
+      properties:
+        Id:
+          type: integer
+        UserId:
+          type: integer
+        ProductId:
+          type: integer
+    LoginRequest:
+      type: object
+      properties:
+        Email:
+          type: string
+        Password:
+          type: string
+    
+    

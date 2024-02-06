@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "khmGsav77NI6BZxsCL/i/Kjj+e3Xc8cseL2TEebMj/Q=",
+  "Source": "API",
+  "BasePath": "_content/API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "API\\wwwroot",
+      "Source": "API",
+      "ContentRoot": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

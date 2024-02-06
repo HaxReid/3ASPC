@@ -1,0 +1,46 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - iBay
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data  
+
+  3aspc_api:
+    depends_on:
+      - postgres
+    build: 
+      context: ./iBay/
+      dockerfile: ./API/Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - iBay
+  
+  swagger_ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8081:8080"
+    networks:
+      - iBay
+    environment:
+      - SWAGGER_JSON=/app/swagger/swagger.yaml
+    volumes:
+      - ./iBay.yaml:/app/swagger/swagger.yaml
+    depends_on:
+      - 3aspc_api
+
+networks:
+  iBay:    
+
+volumes:
+  postgres-data:
+      driver: local
+
