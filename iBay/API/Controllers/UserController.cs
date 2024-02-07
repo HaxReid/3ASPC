@@ -29,7 +29,7 @@ public class UsersController : ControllerBase
     {
         var user = _dbContext.Users.Find(id);
 
-        if (user == null)
+        if (!UserExists(id))
         {
             return NotFound();
         }
@@ -59,8 +59,9 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateUser([FromRoute] int id, User updatedUser)
     {
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
-        if (currentUserId != null && int.Parse(currentUserId) != id)
+        if (int.Parse(currentUserId) != id && currentUserRole != "admin")
         {
             return Forbid();
         }
@@ -94,7 +95,7 @@ public class UsersController : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(updatedUser + "Utilisateur modifié avec succès.");
     }
 
 
@@ -104,14 +105,15 @@ public class UsersController : ControllerBase
     {
         var user = await _dbContext.Users.FindAsync(id);
 
-        if (user == null)
+        if (!UserExists(id))
         {
             return NotFound();
         }
         
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
-        if (currentUserId != null && user.Id != int.Parse(currentUserId))
+        if (int.Parse(currentUserId) != id && currentUserRole != "admin")
         {
             return Forbid();
         }
@@ -119,7 +121,7 @@ public class UsersController : ControllerBase
         _dbContext.Users.Remove(user);
         await _dbContext.SaveChangesAsync();
 
-        return NoContent();
+        return Ok("Utilisateur supprimé avec succès.");
     }
 
     private bool UserExists(int id)

@@ -51,7 +51,7 @@ public class ProductsController : ControllerBase
     {
         var product = await _dbContext.Products.FindAsync(id);
 
-        if (product == null)
+        if (!ProductExists(id))
         {
             return NotFound();
         }
@@ -61,7 +61,7 @@ public class ProductsController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "admin, seller")]
-    public async Task<IActionResult> CreateProduct(Product? product)
+    public async Task<IActionResult> CreateProduct(Product product)
     {
         if (product == null)
         {
@@ -75,7 +75,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    [Authorize(Roles = "seller")]
+    [Authorize(Roles = "admin, seller")]
     public async Task<IActionResult> UpdateProduct([FromRoute] int id, Product updatedProduct)
     {
         if (id != updatedProduct.Id)
@@ -85,13 +85,14 @@ public class ProductsController : ControllerBase
 
         var currentProduct = await _dbContext.Products.FindAsync(id);
 
-        if (currentProduct == null)
+        if (!ProductExists(id))
         {
             return NotFound();
         }
 
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (currentUserId != null && currentProduct.SellerId != int.Parse(currentUserId))
+        var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+        if (currentProduct.SellerId != int.Parse(currentUserId) && currentUserRole != "admin")
         {
             return Forbid();
         }
@@ -118,22 +119,23 @@ public class ProductsController : ControllerBase
             }
         }
 
-        return NoContent();
+        return Ok(updatedProduct + " modifié avec succès.");
     }
 
     [HttpDelete("{id:int}")]
-    [Authorize(Roles = "seller")]
+    [Authorize(Roles = "admin, seller")]
     public async Task<IActionResult> DeleteProduct([FromRoute] int id)
     {
-        var product = await _dbContext.Products.FindAsync(id);
-
-        if (product == null)
+        if (!ProductExists(id))
         {
             return NotFound();
         }
+        
+        var product = await _dbContext.Products.FindAsync(id);
 
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (currentUserId != null && product.SellerId != int.Parse(currentUserId))
+        var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+        if (product.SellerId != int.Parse(currentUserId) && currentUserRole != "admin")
         {
             return Forbid();
         }
@@ -141,7 +143,7 @@ public class ProductsController : ControllerBase
         _dbContext.Products.Remove(product);
         await _dbContext.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(" supprimmé avec succès.");
     }
 
     private bool ProductExists(int id)

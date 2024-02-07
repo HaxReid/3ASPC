@@ -11,7 +11,4 @@ public class User
     public string Username { get; set; }
     public string Password { get; set; }
     public string Role { get; set; }
-    
-    /*public ICollection<Cart> Carts { get; set; }
-    public ICollection<Product> Products { get; set; } */
 }

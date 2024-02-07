@@ -47,3 +47,4 @@ C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\API\obj\Debug\net
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\API\obj\Debug\net8.0\ref\API.dll
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\API\bin\Debug\net8.0\API.staticwebassets.runtime.json
+C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\API\obj\Debug\net8.0\API.sourcelink.json

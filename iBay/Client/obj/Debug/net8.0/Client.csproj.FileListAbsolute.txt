@@ -15,3 +15,4 @@ C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\Client\obj\Debug\
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\Client\obj\Debug\net8.0\Client.pdb
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\Client\obj\Debug\net8.0\Client.genruntimeconfig.cache
 C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\Client\obj\Debug\net8.0\ref\Client.dll
+C:\Users\bmaur\OneDrive\Bureau\Supinfo\BENG-3\3ASPC\3ASPC\iBay\Client\obj\Debug\net8.0\Client.sourcelink.json

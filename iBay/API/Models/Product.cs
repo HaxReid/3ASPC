@@ -11,7 +11,6 @@ public class Product
     public decimal Price { get; set; }
     public string Type { get; set; }
     public bool Available { get; set; }
-    public DateTime AddedTime { get; set; }
+    public string AddedTime { get; set; }
     public int SellerId { get; set; }
-    /*public User User { get; set; }*/
 }

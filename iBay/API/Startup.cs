@@ -26,13 +26,13 @@ namespace API
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = false,
+                        ValidateIssuerSigningKey = false,
                         ValidIssuer = "iBay",
                         ValidAudience = "iBay",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secret"))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this_variable_is_my_secret_connard_256_allumez_le_feu_au_piano_cest_la_fete_au_village_attention_demain"))
                     };
                 });
 
@@ -47,6 +47,9 @@ namespace API
                            .AllowAnyHeader();
                 });
             });
+
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -54,6 +57,8 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {

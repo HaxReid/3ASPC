@@ -21,26 +21,39 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login(LoginRequest loginRequest)
     {
-        var user = _dbContext.Users.SingleOrDefault(u => u.Email == loginRequest.Email);
+        try
+        {
+            var user = _dbContext.Users.FirstOrDefault(u => u.Email == loginRequest.Email);
 
-        if (user == null)
-        {
-            return Unauthorized("Nom d'utilisateur ou mot de passe incorrect.");
+            if (user == null)
+            {
+                return Unauthorized("Nom d'utilisateur ou mot de passe incorrect. 3 ");
+            }
+
+            bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password);
+
+            if (isPasswordCorrect)
+            {
+                var token = GenerateJwtToken(user.Id, user.Role);
+                return Ok(new { Token = token });
+            }
+            else
+            {
+                return Unauthorized("Nom d'utilisateur ou mot de passe incorrect 2 .");
+            }
         }
-        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(loginRequest.Password);
-        if (hashedPassword == user.Password)
+        catch (Exception ex)
         {
-            var token = GenerateJwtToken(user.Id, user.Role);
-            return Ok(new { Token = token });
+            return StatusCode(500, $"Une erreur s'est produite lors de l'authentification : {ex.Message}");
         }
-        return Unauthorized("Nom d'utilisateur ou mot de passe incorrect.");
     }
+
 
 
     private string GenerateJwtToken(int userId, string userRole)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("secret");
+        var key = Encoding.UTF8.GetBytes("this_variable_is_my_secret_connard_256_allumez_le_feu_au_piano_cest_la_fete_au_village_attention_demain");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new Claim[]

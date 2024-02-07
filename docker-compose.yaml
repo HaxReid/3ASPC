@@ -9,9 +9,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     networks:
-      - iBay
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data  
+      - iBay 
 
   3aspc_api:
     depends_on:
@@ -40,7 +38,4 @@ services:
 networks:
   iBay:    
 
-volumes:
-  postgres-data:
-      driver: local
 

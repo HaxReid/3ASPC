@@ -20,28 +20,25 @@ public class CartController : ControllerBase
     }
 
     [HttpPost("{id:int}")]
-    public async Task<IActionResult> AddToCart(int id, [FromRoute] int productId)
+    public async Task<IActionResult> AddToCart([FromRoute] int id)
     {
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         var existingCartItem = await _dbContext.Carts
-            .FirstOrDefaultAsync(c => currentUserId != null && c.UserId == int.Parse(currentUserId) && c.ProductId == productId) ;
+            .FirstOrDefaultAsync(c => c.UserId == int.Parse(currentUserId) && c.ProductId == id) ;
 
         if (existingCartItem != null)
         {
             return BadRequest("Le product est déjà dans le cart.");
         }
-
-        if (currentUserId != null)
-        {
-            var cartItem = new Cart
-            {
-                UserId = int.Parse(currentUserId),
-                ProductId = productId
-            };
-
-            _dbContext.Carts.Add(cartItem);
-        }
+        
+        var cartItem = new Cart 
+        { 
+            UserId = int.Parse(currentUserId), 
+            ProductId = id
+        };
+            
+        _dbContext.Carts.Add(cartItem);
 
         await _dbContext.SaveChangesAsync();
 
@@ -49,12 +46,12 @@ public class CartController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<IActionResult> RemoveFromCart([FromRoute] int productId)
+    public async Task<IActionResult> RemoveFromCart([FromRoute] int id)
     {
         var currentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
+        
         var cartItemToRemove = await _dbContext.Carts
-            .FirstOrDefaultAsync(c => currentUserId != null && c.UserId == int.Parse(currentUserId) && c.ProductId == productId);
+            .FirstOrDefaultAsync(c => currentUserId != null && c.UserId == int.Parse(currentUserId) && c.ProductId == id);
 
         if (cartItemToRemove == null)
         {
