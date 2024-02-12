@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u3aj79h35juN/3+h+UE5Byg8w90qDzMnpVqRVcIZN72i+v5qEMZJQkkw73sD/o7yHOBfI/l4kfkWNjACNkYJ8w==",
+  "dgSpecHash": "OX7ZompgYDqnvno9cLPIrVLxCR0VRV9LjE//LxpuZOrmDbpRcETOI0DsX8aUI1bXlOvRlCFIa7yoJgCOmSeCNw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bmaur\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\bmaur\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.1\\microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512",

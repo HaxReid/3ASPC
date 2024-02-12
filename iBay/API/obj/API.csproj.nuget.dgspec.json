@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\API.csproj": {}
+    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\API.csproj": {
+    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\API.csproj",
+        "projectPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\API.csproj",
         "packagesPath": "C:\\Users\\bmaur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\API\\obj\\",
+        "outputPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bmaur\\AppData\\Roaming\\NuGet\\NuGet.Config"

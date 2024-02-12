@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\Client.csproj": {}
+    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\Client.csproj": {
+    "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\Client.csproj",
+        "projectUniqueName": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\Client.csproj",
+        "projectPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\bmaur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\obj\\",
+        "outputPath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bmaur\\AppData\\Roaming\\NuGet\\NuGet.Config"

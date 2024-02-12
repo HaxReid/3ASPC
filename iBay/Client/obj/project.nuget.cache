@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3AsA72nO+jjzvEQIjuOGWpuxcEHmLTo+W4wPwBdE3Tu9Uh+Qi9mq04nxO3ZUXI6aBRiPirqd7ncziRM5yLF6+w==",
+  "dgSpecHash": "lLf9zkAikSVESlXSHfQbP4EqWbOWdL/TXVbRzdqPPe6sNj8EfanFN1K2pDK/m7tKlbDxTvQkFRBchw6Svx64dQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC\\iBay\\Client\\Client.csproj",
+  "projectFilePath": "C:\\Users\\bmaur\\OneDrive\\Bureau\\Supinfo\\BENG-3\\3ASPC\\3ASPC-Benjamin-Maury-Paul-Etienne-Guerin-BENG3-SUPINFO-Tours-2024\\iBay\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bmaur\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
